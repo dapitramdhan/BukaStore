@@ -1,0 +1,77 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@null"
+    android:clipToPadding="false" >
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:translationZ="0.1dp"
+        app:elevation="0.0dp" >
+
+        <com.bukastore.mhr.custom.SplitToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            android:paddingTop="?attr/actionBarSize"
+            android:theme="@style/ToolbarTheme"
+            app:contentInsetEnd="4dp"
+            app:contentInsetLeft="10dp"
+            app:contentInsetRight="4dp"
+            app:contentInsetStart="10dp" >
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardview_search"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="0dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|center|center_horizontal|left"
+                    android:drawableLeft="@drawable/ic_search"
+                    android:drawablePadding="10dp"
+                    android:drawableTint="?colorPrimary"
+                    android:paddingLeft="15dp"
+                    android:text="Cari Produk"
+                    android:textColor="@color/colorTextLight"
+                    android:textSize="15sp" />
+            </com.google.android.material.card.MaterialCardView>
+        </com.bukastore.mhr.custom.SplitToolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipper_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <com.bukastore.mhr.custom.FaddingEffect.ScrollFadeOnToolbar
+            android:id="@+id/scroll_fade"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <include
+                    android:id="@+id/include_slider_banner"
+                    layout="@layout/include_slider_banner" />
+
+                <include
+                    android:id="@+id/include_recyclerview_produk"
+                    layout="@layout/include_recyclerview_produk" />
+            </LinearLayout>
+        </com.bukastore.mhr.custom.FaddingEffect.ScrollFadeOnToolbar>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

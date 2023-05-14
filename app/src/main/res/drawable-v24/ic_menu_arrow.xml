@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <!-- set a place holder Drawable so android:drawable isn't null -->
+ 
+	<item
+		android:id="@+id/oval_ground"
+        android:drawable="@drawable/oval_rounded"
+        android:gravity="center" />
+	<item
+        android:drawable="@drawable/ic_arrow_back_white" />
+</layer-list>

@@ -1,0 +1,28 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item 
+	  	android:id="@+id/nav_home" 
+	  	android:icon="@drawable/ic_home" 
+		  android:title="@string/app_home"/>
+		
+    <item
+		  android:id="@+id/nav_kategori"
+		  android:icon="@drawable/ic_feed" 
+		  android:title="@string/app_kategori"/>
+ 
+    <item
+		  android:id="@+id/nav_feed"
+		  android:icon="@drawable/ic_kategori" 
+		  android:title="@string/app_feed"/>
+		  
+     <item
+		  android:id="@+id/nav_pesanan"
+		  android:icon="@drawable/ic_pesanan" 
+		  android:title="@string/app_pesanan"/>
+		  
+     <item
+		  android:id="@+id/nav_profile"
+		  android:icon="@drawable/ic_profile" 
+		  android:title="@string/app_akun"/>
+
+</menu>

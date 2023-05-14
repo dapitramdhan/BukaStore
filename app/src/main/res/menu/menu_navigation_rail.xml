@@ -1,0 +1,30 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item 
+	  	android:id="@+id/one_rail" 
+	  	android:icon="@drawable/ic_home" 
+		  android:title="one"/>
+		
+    <item
+		  android:id="@+id/two_rail"
+		  android:icon="@drawable/ic_feed" 
+		  android:title="Peralatan Dapur"/>
+ 
+    <item
+		  android:id="@+id/three_rail"
+		  android:icon="@drawable/ic_kategori" 
+		  app:showAsAction="always"
+		  android:title="three"/>
+		  
+     <item
+		  android:id="@+id/for_rail"
+		  android:icon="@drawable/ic_share" 
+		  android:title="four"/>
+		  
+     <item
+		  android:id="@+id/five_rail"
+		  android:icon="@drawable/ic_profile" 
+		  android:title="five"/>
+
+</menu>
