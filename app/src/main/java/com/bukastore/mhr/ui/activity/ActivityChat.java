@@ -29,7 +29,7 @@ public class ActivityChat extends AppCompatActivity{
 	
 	public void onBackPressed() {
 		super.onBackPressed();
-		overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+		//overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
 		finish();
 	}
 }

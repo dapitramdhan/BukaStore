@@ -17,6 +17,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
     </style>
+	
+	<style name="AppThemeMaterial3" parent="Theme.Material3.Light.NoActionBar"></style>
 
     <style name="AppThemeTransparent" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:actionBarStyle">@style/Widget.ActionBar</item>

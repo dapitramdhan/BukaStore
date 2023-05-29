@@ -21,6 +21,7 @@ import android.view.LayoutInflater;
 
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -56,6 +57,7 @@ import com.bukastore.mhr.utils.VolleySingleton;
 import com.bukastore.mhr.viewmodel.NetworkViewModel;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.SliderAnimations;
@@ -87,10 +89,12 @@ public class LayoutFragmentMain extends Fragment
 	private MaterialCardView cardViewSearch;
 	private SwipeRefreshLayout swipeRefreshLayout;
 	private CoordinatorLayout rootLayout;
+	private LinearLayout containerShimmer,containerMain;
 	private List<SliderBanner> sliderImageList;
 	private List<Produk> listProduk = new ArrayList<>();
 	private ProdukAdapter produkAdapter;
 	private ShimmerFrameLayout shimmerFrameLayout;
+	private FloatingActionButton backToTop;
 
 	private RequestQueue mRequestQueue;
 
@@ -137,18 +141,25 @@ public class LayoutFragmentMain extends Fragment
 		progress = binding.includeRecyclerviewProduk.progress;
 		swipeRefreshLayout = binding.swipperRefresh;
 		cardViewSearch = binding.cardviewSearch;
-		shimmerFrameLayout = binding.includeRecyclerviewProduk.shimmerLayout;
+		shimmerFrameLayout = binding.shimmerLayout;
+		backToTop = binding.includeRecyclerviewProduk.backToTop;
+		containerShimmer = binding.containerShimmer;
+		containerMain = binding.containerMain;
 
 		cardViewSearch.setOnClickListener(this::setUpSearchBar);
 		// cek apakah ada koneksi internet
 		NetworkViewModel.getInstance().getNetworkConnectivityStatus().observe(requireActivity(),
 				activeNetworkStateObserver);
 		// 
+		getChildFragmentManager().beginTransaction()
+				.replace(R.id.fragment_produk_horizontal, new ProdukHorizontalFragment()).commit();
+		getChildFragmentManager().beginTransaction().replace(R.id.fragment_icon_kategori, new IconKategoriFragment())
+				.commit();
 		setUpBeforeToolbarBackground();
 		setUpSliderBanner();
 		initializeWidgets();
 		setUpRecyclerView();
-		onScroll(-1, 0);
+		onScroll(0, 0);
 		setHasOptionsMenu(true);
 		refresh();
 		return binding.getRoot();
@@ -159,11 +170,13 @@ public class LayoutFragmentMain extends Fragment
 			//swipeRefreshLayout.setRefreshing(false);
 			//getDataProduk(pageNumber, offset);
 		} else {
+			/*	
 			shimmerFrameLayout.setVisibility(View.VISIBLE);
 			shimmerFrameLayout.startShimmer();
 			recyclerView_produk.setVisibility(View.GONE);
 			listProduk.clear();
 			recyclerView_produk.removeAllViewsInLayout();
+			*/
 
 		}
 	}
@@ -174,6 +187,8 @@ public class LayoutFragmentMain extends Fragment
 	}
 
 	private void setUpRecyclerView() {
+		
+		
 		produkAdapter = new ProdukAdapter(listProduk);
 		recyclerView_produk.setAdapter(produkAdapter);
 		produkAdapter.notifyDataSetChanged();
@@ -228,10 +243,10 @@ public class LayoutFragmentMain extends Fragment
 		switch (item.getItemId()) {
 		case R.id.action_chat:
 			startActivity(new Intent(requireActivity(), ActivityChat.class));
-			getActivity().overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+			//getActivity().overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
 			return true;
 		}
-		
+
 		return super.onOptionsItemSelected(item);
 	}
 
@@ -244,7 +259,7 @@ public class LayoutFragmentMain extends Fragment
 		sliderImageList.add(new SliderBanner(MPConstants.url4));
 		sliderImageList.add(new SliderBanner(MPConstants.url5));
 		SliderBannerAdapter sliderImageAdapter = new SliderBannerAdapter(requireActivity(), sliderImageList);
-		sliderView.setIndicatorAnimation(IndicatorAnimationType.SCALE);
+		sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM);
 		//sliderView.setSliderTransformAnimation(SliderAnimations.);
 		sliderView.setSliderAdapter(sliderImageAdapter);
 		sliderView.setScrollTimeInSec(3);
@@ -276,7 +291,6 @@ public class LayoutFragmentMain extends Fragment
 	// somewhere after views have been set.
 
 	private void getDataProduk(int pageNumber, int offset) {
-
 		String url = MPConstants.PRODUK_URL;
 		mRequestQueue = Volley.newRequestQueue(getActivity());
 		JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, url, null,
@@ -286,8 +300,8 @@ public class LayoutFragmentMain extends Fragment
 						new Handler().postDelayed(new Runnable() {
 							@Override
 							public void run() {
-
 								recyclerView_produk.setVisibility(View.VISIBLE);
+								containerMain.setVisibility(View.VISIBLE);
 								shimmerFrameLayout.stopShimmer();
 								shimmerFrameLayout.setVisibility(View.GONE);
 
@@ -349,12 +363,15 @@ public class LayoutFragmentMain extends Fragment
 		swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
 			@Override
 			public void onRefresh() {
+
 				shimmerFrameLayout.setVisibility(View.VISIBLE);
 				shimmerFrameLayout.startShimmer();
+				containerMain.setVisibility(View.GONE);
 				recyclerView_produk.setVisibility(View.GONE);
 				listProduk.clear();
 				recyclerView_produk.removeAllViewsInLayout();
 				getDataProduk(pageNumber, offset);
+
 			}
 		});
 	}
@@ -368,4 +385,5 @@ public class LayoutFragmentMain extends Fragment
 		super.onPause();
 		shimmerFrameLayout.stopShimmer();
 	}
+
 }

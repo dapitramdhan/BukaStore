@@ -1,72 +1,64 @@
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:clickable="true"
-    android:foreground="?selectableItemBackground"
-    app:cardBackgroundColor="@color/grayLight"
-    app:cardCornerRadius="5dp"
-    app:cardUseCompatPadding="true" >
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
 
-    <RelativeLayout
+    <LinearLayout
+        android:id="@+id/container_shimmer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
 
-        <ImageView
-            android:id="@+id/imageProduk"
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmer_layout"
             android:layout_width="match_parent"
-            android:layout_height="170dp"
-            android:background="@drawable/ic_no_image"
-            android:scaleType="centerCrop" />
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/namaProduk"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/imageProduk"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:text="Nama Produk"
-            android:textColor="#b3000000"
-            android:textSize="14dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/hargaProduk"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/namaProduk"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:text="Harga Produk"
-            android:textColor="@color/colorPrimary"
-            android:textSize="16dp"
-            android:textStyle="normal" />
+                <include layout="@layout/item_shimmer" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@id/namaProduk"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="15dp"
-            android:text="10Rb Terjual"
-            android:textColor="@color/black"
-            android:textSize="10dp"
-            android:textStyle="normal" />
+                <include layout="@layout/item_shimmer" />
 
-        <androidx.appcompat.widget.AppCompatRatingBar
-            android:id="@+id/rating"
-            style="@style/Widget.AppCompat.RatingBar.Small"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/hargaProduk"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:isIndicator="false"
-            android:numStars="5"
-            android:progressTint="#FFA200"
-            android:rating="3.5"
-            android:stepSize="0.5" />
-    </RelativeLayout>
+                <include layout="@layout/item_shimmer" />
 
-</androidx.cardview.widget.CardView>
+                <include layout="@layout/item_shimmer" />
+
+                <include layout="@layout/item_shimmer" />
+            </LinearLayout>
+        </com.facebook.shimmer.ShimmerFrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/container_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <include
+            android:id="@+id/include_slider_banner"
+            layout="@layout/include_slider_banner" />
+
+        <FrameLayout
+            android:id="@+id/fragment_icon_kategori"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp" />
+
+        <FrameLayout
+            android:id="@+id/fragment_produk_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <include
+            android:id="@+id/include_recyclerview_produk"
+            layout="@layout/include_recyclerview_produk" />
+    </LinearLayout>
+
+</RelativeLayout>

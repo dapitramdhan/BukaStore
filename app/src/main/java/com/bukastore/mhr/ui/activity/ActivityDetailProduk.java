@@ -98,7 +98,7 @@ public class ActivityDetailProduk extends AppCompatActivity implements OnScrollC
 		
 		binding.btnBack.setOnClickListener(v -> this.onBackPressed());
 		setUpBeforeToolbarBackground();
-		onScroll(-1, 0);
+		onScroll(0, 0);
 	}
 
 	/*

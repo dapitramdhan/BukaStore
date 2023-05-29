@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,7 +8,9 @@
         android:id="@+id/appBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true" >
+        android:fitsSystemWindows="true"
+        android:translationZ="0.1dp"
+        app:elevation="0dp" >
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -22,53 +24,49 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerVertical="true"
-        android:layout_margin="16dp"
-        android:gravity="center_vertical|center|center_horizontal"
-        android:orientation="vertical" >
+        android:layout_height="wrap_content"
+        android:layout_below="@id/appBar"
+        android:orientation="vertical"
+        android:padding="16dp" >
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:hint="Email"
-            app:boxStrokeWidth="1dp"
-            app:boxStrokeWidthFocused="1dp"
-            app:expandedHintEnabled="false"
-            app:placeholderText="Masukan alamat email" >
+            android:layout_height="wrap_content" >
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/buatNamaAplikasi"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card"
+                android:layout_width="110dp"
+                android:layout_height="150dp"
+                app:cardBackgroundColor="@color/grayLight"
+                app:cardElevation="0dp"
+                app:cardUseCompatPadding="false" />
+
+            <TextView
+                android:id="@+id/username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_toEndOf="@id/card"
+                android:text="User"
+                android:textSize="23sp" />
+
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="30"
-                android:imeOptions="actionGo"
-                android:inputType="text"
-                android:maxLength="30"
-                android:textSize="14sp" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_alignBottom="@id/card"
+                android:layout_margin="16dp"
+                android:layout_toEndOf="@id/card"
+                app:strokeColor="@color/grayLight"
+                app:strokeWidth="1dp" >
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Password"
-            app:boxStrokeWidth="1dp"
-            app:boxStrokeWidthFocused="1dp"
-            app:expandedHintEnabled="false"
-            app:placeholderText="Masukan Password" >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="30"
-                android:imeOptions="flagNoEnterAction"
-                android:inputType="text"
-                android:maxLength="30"
-                android:textSize="14sp" />
-        </com.google.android.material.textfield.TextInputLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|center|center_horizontal"
+                    android:padding="8dp"
+                    android:text="Edit Profil" />
+            </com.google.android.material.card.MaterialCardView>
+        </RelativeLayout>
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>

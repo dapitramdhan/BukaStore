@@ -108,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
 	}
 
 	private void setUpBottomNavigation() {
+		binding.bottomNavigation.setItemIconTintList(null);
 		binding.bottomNavigation
 				.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
 					@Override

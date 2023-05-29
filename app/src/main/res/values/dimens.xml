@@ -8,8 +8,8 @@
     <dimen name="text_big_med">12sp</dimen>
     <dimen name="text_big">14sp</dimen>
     <dimen name="text_head">18sp</dimen>
-    <dimen name="design_bottom_navigation_text_size" tools:override="true">10sp</dimen>
-    <dimen name="design_bottom_navigation_active_text_size" tools:override="true">10sp</dimen>
+    <dimen name="design_bottom_navigation_text_size" tools:override="true">12sp</dimen>
+    <dimen name="design_bottom_navigation_active_text_size" tools:override="true">12sp</dimen>
     <dimen name="divider">0.5dp</dimen>
 
 </resources>

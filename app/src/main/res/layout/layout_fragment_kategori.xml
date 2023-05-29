@@ -8,7 +8,9 @@
         android:id="@+id/appBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true" >
+        android:fitsSystemWindows="true"
+        android:translationZ="0.1dp"
+        app:elevation="0.0dp" >
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -21,18 +23,12 @@
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_layout"
-            style="@style/TabLayout"
+            android:theme="@style/AppThemeMaterial3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            app:tabIconTint="@color/tab_color"
-            app:tabIndicator="@drawable/tab_indicator"
+			app:tabTextColor="#808080"
+			app:tabRippleColor="@android:color/transparent"
 			app:tabIndicatorColor="@color/colorPrimary"
-			app:tabIndicatorFullWidth="true"
-            app:tabIndicatorAnimationMode="linear"
-            app:tabPaddingEnd="-1dp"
-            app:tabPaddingStart="-1dp"
-            app:tabTextColor="#808080" />
+            android:layout_height="wrap_content" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager.widget.ViewPager
@@ -42,3 +38,4 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
+

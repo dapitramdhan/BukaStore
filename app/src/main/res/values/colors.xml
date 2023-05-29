@@ -62,7 +62,7 @@
     <color name="md_theme_dark_outlineVariant">#49454F</color>
     <color name="md_theme_dark_scrim">#000000</color>
     
-	<color name="colorPrimary">#DF2029</color>
+	<color name="colorPrimary">#2962FF</color>
     <color name="colorPrimaryDark">#ffffff</color>
 	<color name="colorAccent">#512da8</color>
 	<color name="colorControlHighlight">#cccccc</color>
