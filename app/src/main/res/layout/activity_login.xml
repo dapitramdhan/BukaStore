@@ -4,22 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fitsSystemWindows="true" >
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            style="@style/ToolbarTheme"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            app:title="@string/app_akun"
-            app:titleTextColor="@android:color/white" />
-    </com.google.android.material.appbar.AppBarLayout>
-
     <LinearLayout
         android:id="@+id/cont_editext"
         android:layout_width="match_parent"
@@ -85,17 +69,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/lupa_password"
-		android:foreground="?android:attr/selectableItemBackground"
         android:layout_margin="16dp"
+        android:foreground="?android:attr/selectableItemBackground"
         app:cardBackgroundColor="@color/colorPrimary" >
 
         <TextView
-			android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|center|center_horizontal"
             android:padding="10dp"
             android:text="Masuk"
+            android:textColor="@color/white"
             android:textStyle="bold" />
     </com.google.android.material.card.MaterialCardView>
 

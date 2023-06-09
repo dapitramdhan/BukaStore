@@ -47,6 +47,7 @@ import com.bukastore.mhr.databinding.LayoutFragmentMainBinding;
 import com.bukastore.mhr.helper.TintHelper;
 import com.bukastore.mhr.model.Produk;
 import com.bukastore.mhr.model.SliderBanner;
+import com.bukastore.mhr.ui.HOME.SliderHome;
 import com.bukastore.mhr.ui.activity.ActivityChat;
 import com.bukastore.mhr.ui.activity.ActivityDetailProduk;
 import com.bukastore.mhr.ui.activity.SearchActivity;
@@ -89,7 +90,7 @@ public class LayoutFragmentMain extends Fragment
 	private MaterialCardView cardViewSearch;
 	private SwipeRefreshLayout swipeRefreshLayout;
 	private CoordinatorLayout rootLayout;
-	private LinearLayout containerShimmer,containerMain;
+	private LinearLayout containerShimmer, containerMain;
 	private List<SliderBanner> sliderImageList;
 	private List<Produk> listProduk = new ArrayList<>();
 	private ProdukAdapter produkAdapter;
@@ -137,7 +138,7 @@ public class LayoutFragmentMain extends Fragment
 		toolbar.setTitle("");
 
 		recyclerView_produk = binding.includeRecyclerviewProduk.recyclerviewProduk;
-		mHeader = binding.includeSliderBanner.slider;
+	//	mHeader = binding.includeSliderBanner.slider;
 		progress = binding.includeRecyclerviewProduk.progress;
 		swipeRefreshLayout = binding.swipperRefresh;
 		cardViewSearch = binding.cardviewSearch;
@@ -151,18 +152,24 @@ public class LayoutFragmentMain extends Fragment
 		NetworkViewModel.getInstance().getNetworkConnectivityStatus().observe(requireActivity(),
 				activeNetworkStateObserver);
 		// 
+
+		setUpBeforeToolbarBackground();
+		initializeWidgets();
+		setUpRecyclerView();
+		onScroll(-1, 0);
+		setHasOptionsMenu(true);
+		refresh();
+		setUpFragment();
+		return binding.getRoot();
+	}
+
+	private void setUpFragment() {
+		getChildFragmentManager().beginTransaction().replace(R.id.slider_fragment_home, SliderHome.newInstance())
+				.commit();
 		getChildFragmentManager().beginTransaction()
 				.replace(R.id.fragment_produk_horizontal, new ProdukHorizontalFragment()).commit();
 		getChildFragmentManager().beginTransaction().replace(R.id.fragment_icon_kategori, new IconKategoriFragment())
 				.commit();
-		setUpBeforeToolbarBackground();
-		setUpSliderBanner();
-		initializeWidgets();
-		setUpRecyclerView();
-		onScroll(0, 0);
-		setHasOptionsMenu(true);
-		refresh();
-		return binding.getRoot();
 	}
 
 	private void showErrorConnectionInternet(boolean isConnected) {
@@ -187,8 +194,7 @@ public class LayoutFragmentMain extends Fragment
 	}
 
 	private void setUpRecyclerView() {
-		
-		
+
 		produkAdapter = new ProdukAdapter(listProduk);
 		recyclerView_produk.setAdapter(produkAdapter);
 		produkAdapter.notifyDataSetChanged();
@@ -248,23 +254,6 @@ public class LayoutFragmentMain extends Fragment
 		}
 
 		return super.onOptionsItemSelected(item);
-	}
-
-	private void setUpSliderBanner() {
-		SliderView sliderView = binding.includeSliderBanner.slider;
-		sliderImageList = new ArrayList<>();
-		sliderImageList.add(new SliderBanner(MPConstants.url1));
-		sliderImageList.add(new SliderBanner(MPConstants.url2));
-		sliderImageList.add(new SliderBanner(MPConstants.url1));
-		sliderImageList.add(new SliderBanner(MPConstants.url4));
-		sliderImageList.add(new SliderBanner(MPConstants.url5));
-		SliderBannerAdapter sliderImageAdapter = new SliderBannerAdapter(requireActivity(), sliderImageList);
-		sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM);
-		//sliderView.setSliderTransformAnimation(SliderAnimations.);
-		sliderView.setSliderAdapter(sliderImageAdapter);
-		sliderView.setScrollTimeInSec(3);
-		sliderView.setAutoCycle(true);
-		sliderView.startAutoCycle();
 	}
 
 	@Override
@@ -363,7 +352,6 @@ public class LayoutFragmentMain extends Fragment
 		swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
 			@Override
 			public void onRefresh() {
-
 				shimmerFrameLayout.setVisibility(View.VISIBLE);
 				shimmerFrameLayout.startShimmer();
 				containerMain.setVisibility(View.GONE);

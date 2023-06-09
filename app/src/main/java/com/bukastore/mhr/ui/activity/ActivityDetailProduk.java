@@ -95,10 +95,12 @@ public class ActivityDetailProduk extends AppCompatActivity implements OnScrollC
 		tintIconCart = getResources().getDrawable(R.drawable.ic_cart);
 		tintIconMore = getResources().getDrawable(R.drawable.ic_more);
 		ovalIcon = getResources().getDrawable(R.drawable.oval_rounded);
-		
+
 		binding.btnBack.setOnClickListener(v -> this.onBackPressed());
 		setUpBeforeToolbarBackground();
 		onScroll(0, 0);
+
+		cardViewSearch.setOnClickListener(this::setUpSearchBar);
 	}
 
 	/*
@@ -115,6 +117,11 @@ public class ActivityDetailProduk extends AppCompatActivity implements OnScrollC
 		return true;
 	}
 	*/
+
+	private void setUpSearchBar(View view) {
+		startActivity(new Intent(this, SearchActivity.class));
+		overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+	}
 
 	// Toolbar Fade On Scrolling
 	@Override
@@ -136,10 +143,11 @@ public class ActivityDetailProduk extends AppCompatActivity implements OnScrollC
 		}
 		// Set Alpha 0 SearchView and StatusBar
 		if (t == 0) {
-			cardViewSearch.setAlpha(0);
+			cardViewSearch.setAlpha(0);		
 			decor.setSystemUiVisibility(0);
 		} else {
 			cardViewSearch.setAlpha(afterAlpha);
+			cardViewSearch.setOnClickListener(this::setUpSearchBar);
 			decor.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 		}
 		// Tint Overflow

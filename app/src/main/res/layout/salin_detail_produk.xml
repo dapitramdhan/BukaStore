@@ -1,64 +1,55 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <LinearLayout
-        android:id="@+id/container_shimmer"
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical" >
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_akun_outline"
+        android:drawablePadding="10dp"
+        android:padding="16dp"
+        android:text="Saldo Saya" />
 
-        <com.facebook.shimmer.ShimmerFrameLayout
-            android:id="@+id/shimmer_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical" >
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical" >
-
-                <include layout="@layout/item_shimmer" />
-
-                <include layout="@layout/item_shimmer" />
-
-                <include layout="@layout/item_shimmer" />
-
-                <include layout="@layout/item_shimmer" />
-
-                <include layout="@layout/item_shimmer" />
-            </LinearLayout>
-        </com.facebook.shimmer.ShimmerFrameLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/container_main"
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical" >
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_akun_outline"
+        android:drawablePadding="10dp"
+        android:padding="16dp"
+        android:text="Alamat Terima" />
 
-        <include
-            android:id="@+id/include_slider_banner"
-            layout="@layout/include_slider_banner" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_akun_outline"
+        android:drawablePadding="10dp"
+        android:padding="16dp"
+        android:text="Voucher Saya" />
 
-        <FrameLayout
-            android:id="@+id/fragment_icon_kategori"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_akun_outline"
+        android:drawablePadding="10dp"
+        android:padding="16dp"
+        android:text="Terakhir Di Lihat" />
 
-        <FrameLayout
-            android:id="@+id/fragment_produk_horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_akun_outline"
+        android:drawablePadding="10dp"
+        android:padding="16dp"
+        android:text="Tentang Kami" />
 
-        <include
-            android:id="@+id/include_recyclerview_produk"
-            layout="@layout/include_recyclerview_produk" />
-    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_akun_outline"
+        android:drawablePadding="10dp"
+        android:padding="16dp"
+        android:text="Versi" />
 
-</RelativeLayout>
+</LinearLayout>

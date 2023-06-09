@@ -25,6 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_above="@id/view"
+			android:elevation="10dp"
             app:itemPaddingBottom="8dp"
 			app:itemIconSize="23dp"
             app:itemTextAppearanceActive="@dimen/design_bottom_navigation_active_text_size"

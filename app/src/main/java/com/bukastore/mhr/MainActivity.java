@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.MenuItem;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +17,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import com.bukastore.mhr.databinding.ActivityMainBinding;
+import com.bukastore.mhr.ui.HOME.LayoutFragmentHome;
 import com.bukastore.mhr.ui.activity.ActivityNoConnection;
 import com.bukastore.mhr.ui.fragment.LayoutFragmentFeed;
 import com.bukastore.mhr.ui.fragment.LayoutFragmentKategori;
@@ -29,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
 	private ActivityMainBinding binding;
 	private BottomNavigationView bottomNavigationView;
-	final Fragment one = new LayoutFragmentMain();
+	final Fragment one = new LayoutFragmentHome();
 	final Fragment two = new LayoutFragmentKategori();
 	final Fragment thre = new LayoutFragmentFeed();
 	final Fragment four = new LayoutFragmentPesanan();
@@ -38,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
 	boolean doubleBackToExitPressedOnce = false;
 	Fragment active = one;
 	MenuItem prevMenuItem;
-	
 
 	private final Observer<Boolean> activeNetworkStateObserver = new Observer<Boolean>() {
 		@Override
@@ -63,8 +64,8 @@ public class MainActivity extends AppCompatActivity {
 	}
 
 	private void showErrorConnectionInternet(boolean isConnected) {
-		Animation animation = AnimationUtils.loadAnimation(this,R.anim.fade_in);
-		Animation animation1 = AnimationUtils.loadAnimation(this,R.anim.slide_down);
+		Animation animation = AnimationUtils.loadAnimation(this, R.anim.fade_in);
+		Animation animation1 = AnimationUtils.loadAnimation(this, R.anim.slide_down);
 		if (isConnected) {
 			//binding.message.setVisibility(View.GONE);
 			binding.cekInternet.startAnimation(animation1);

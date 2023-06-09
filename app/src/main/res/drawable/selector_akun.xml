@@ -1,0 +1,10 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+	
+	<item 
+		android:drawable="@drawable/ic_akun_fill"
+		android:state_checked="true"/>
+			
+	<item 
+		android:drawable="@drawable/ic_akun_outline"
+		android:state_checked="false"/>
+</selector>
